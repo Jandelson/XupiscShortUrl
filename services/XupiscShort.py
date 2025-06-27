@@ -1,7 +1,7 @@
 import hashlib
 
 class XupiscShort:
-    __BASE_URL = "http://xupisc.url/"
+    __BASE_URL = "http://localhost:8086/"
 
     def __init__(self, url:str):
         self.__url = url

@@ -11,3 +11,14 @@ pip install -r requirements.txt
 ```
 - podman run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
 ```
+
+# Run application
+* Run server
+```
+python server.py
+```
+
+* Run application to register urls
+```
+python main.py
+```
