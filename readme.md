@@ -1,0 +1,13 @@
+# Start project Xupisc URL
+* Enable venv enviroment
+
+```
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+# Start Redis with podman
+* Redis to register
+```
+- podman run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
+```
