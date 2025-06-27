@@ -6,6 +6,12 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+# Create folder qrcode
+* Create folder to save images qrcode
+```
+mkdir qrcode
+```
+
 # Start Redis with podman
 * Redis to register
 ```
