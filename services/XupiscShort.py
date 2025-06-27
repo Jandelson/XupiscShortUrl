@@ -1,7 +1,12 @@
 import hashlib
+import dotenv
+import os
 
+dotenv.load_dotenv()
 class XupiscShort:
-    __BASE_URL = "http://localhost:8086/"
+    _HOST = os.getenv("APPLICATION_HOST", "localhost")
+    _PORT = os.getenv("APPLICATION_PORT", "8086")
+    _BASE_URL = f"http://{_HOST}:{_PORT}/"
 
     def __init__(self, url:str):
         self.__url = url
@@ -9,7 +14,7 @@ class XupiscShort:
 
     @property
     def BASE_URL(self):
-        return self.__BASE_URL
+        return self._BASE_URL
 
     @property
     def short_url(self):
@@ -22,4 +27,4 @@ class XupiscShort:
             raise ValueError("A URL deve começar com 'http://' ou 'https://'.")
 
         hash_object = hashlib.md5(self.__url.encode())
-        self.__short_url = self.__BASE_URL + hash_object.hexdigest()[:6]
+        self.__short_url = self._BASE_URL + hash_object.hexdigest()[:6]

@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  xupisc:
+    build: .
+    container_name: xupisc_python
+    expose:
+      - 5000
+
+  xupisc_nginx:
+    image: nginx
+    container_name: xupisc_nginx
+    ports:
+      - "${APPLICATION_PORT}:4000"
+    volumes:
+      - ./config/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - xupisc
+
+  xupisc_redis:
+    image: redis:latest
+    container_name: xupisc_redis
+    volumes:
+      - ./config/redis_data:/data
+    ports:
+      - "6379:6379"

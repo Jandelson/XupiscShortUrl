@@ -1,7 +1,12 @@
 import redis
+import dotenv
+import os
 
+dotenv.load_dotenv()
 class XupiscRegister:
-    def __init__(self, redis_host='localhost', redis_port=6379):
+    __REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+
+    def __init__(self, redis_host=__REDIS_HOST, redis_port=6379):
         self.redis_client = redis.Redis(host=redis_host, port=redis_port, decode_responses=True)
 
     def register_url(self, short_url, original_url, qrcode_url, expiration_time=3600):

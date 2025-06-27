@@ -1,10 +1,11 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import urlparse, parse_qs, urljoin
 from services.XupiscRegister import XupiscRegister
+from services.XupiscShort import XupiscShort
 
 class XupiscController(BaseHTTPRequestHandler):
     def do_GET(self):
-        full_url = f"http://{self.headers['Host']}{self.path}"
+        full_url = urljoin(XupiscShort._BASE_URL, self.path)
 
         xupiscRegister = XupiscRegister()
         url = xupiscRegister.get_original_url(full_url)
